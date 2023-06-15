@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Modelling Multilevel Rydberg-Atom Electrometry - Matthew Chilcott</title>
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="reveal.js/dist/theme/dark.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css">
+
+    <style>
+        img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        p {
+            padding-bottom:30pt;
+        }
+        
+        .box{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+        .item{
+            flex: 1 1 auto;
+        }
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section> <!-- Intro -->
+            <section data-auto-animate>
+                <p>Modelling Multilevel Rydberg-Atom Electrometry</p>
+                <img src="gfx/LaserTHzNoLevel.svg" />
+            </section>
+            <section data-auto-animate>
+                <p>Modelling Multilevel <span style="font-weight: bold;">Rydberg-Atom</span> Electrometry</p>
+                <img style="width: 50%" src="gfx/Rydberg.svg" />
+            </section>
+            <section>
+                <p>Modelling Multilevel Rydberg-Atom <span style="font-weight: bold;">Electrometry</span></p>
+                <img style="width: 50%" src="gfx/RydbergDipole.svg" />
+            </section>
+        </section>
+        <section> <!-- How Rydberg -->
+            <section>
+                <p>Rydberg Atom: easier to use 2 transitions</p>
+                <div class="box">
+                    <img class="item" style="width: 30%; padding-right:10%" src="gfx/Rydberg2Photon.svg" /> 
+                    <img class="item" style="width: 45%" src="gfx/RydbergLasers.svg" />
+                </div>
+            </section>
+            <section>
+                <div class="box">
+                    <img class="item" style="width: 45%" src="gfx/3LevelBareProbe.svg" />
+                    <img class="item" style="width: 45%" src="gfx/ProbeLasers.svg" />
+                </div>
+            </section>
+            <section>
+                <div class="box">
+                    <img class="item" style="width: 45%" src="gfx/3LevelEIT.svg" />
+                    <img class="item" style="width: 45%" src="gfx/RydbergLasers.svg" />
+                </div>
+            </section>
+            <section>
+                <p>Scanning the coupling field isolates signal of interest</p>
+                <img src="gfx/3LevelBothProbings.svg" />
+            </section>
+        </section>
+        <section> <!-- How electrometry -->
+            <section>
+                <p>Electrometry: THz field splits EIT</p>
+                <img src="gfx/LaserTHz.svg" />
+            </section>
+            <section>
+                <img src="gfx/4LevelBlueTHzLowPower.svg" />
+            </section>
+            <section>
+                <img src="gfx/4LevelBlueTHzHighPower.svg" />
+            </section>
+        </section>
+        <section> <!-- Basic model -->
+            <section data-auto-animate>
+                <p>Density matrix models are great for spectroscopy</p>
+                <img src="gfx/VisualDMPre.svg" />
+            </section>
+            <section data-auto-animate>
+                <p>Density matrix models are great for spectroscopy</p>
+                <img src="gfx/VisualDM.svg" />
+            </section>
+            <section>
+                <p>
+                \begin{equation}
+                    \frac{d\rho}{dt} = \frac{1}{i\hbar}\underbrace{\left[\hat{H}, \rho\right]}_\text{Driven Transitions} + \sum_i \Gamma_i \left(L_i\rho L_i^\dagger - \frac{1}{2}\left\{L^\dagger_i L_i, \rho\right\}\right)
+                \end{equation}
+                </p>
+                <div class="box">
+                <p class="item">\begin{equation}
+                    \hat{H} = \frac{\hbar}{2}\begin{bmatrix}
+                        0 & \Omega_r & 0 & 0\\
+                        \Omega_r & -2\Delta_r & \Omega_c & 0\\
+                        0 & \Omega_c & -2(\Delta_r + \Delta_c) & \Omega_\text{THz}\\
+                        0 & 0 & \Omega_\text{THz} & -2(\Delta_r + \Delta_c + \Delta_\text{THz})
+                    \end{bmatrix}
+                \end{equation}</p><img class="item" src="gfx/VisualHamiltonian.svg" />
+                </div>
+            </section>
+            <section data-auto-animate>
+                <p>
+                \begin{equation}
+                    \frac{d\rho}{dt} = \frac{1}{i\hbar}\left[\hat{H}, \rho\right] + \sum_i \underbrace{\Gamma_i \left(L_i\rho L_i^\dagger - \frac{1}{2}\left\{L^\dagger_i L_i, \rho\right\}\right)}_\text{Decay Paths}
+                \end{equation}
+                </p>
+                
+                <img src="gfx/VisualDecayOp.svg" />
+            </section>
+            <section>
+                <p class="fragment fade-out">Steady-state solution:</p>
+                <img height="60%" src="gfx/3LevelBothProbings.svg" />
+                <p class="fragment">Only representative of stationary (ultracold) atoms</p>
+            </section>
+            <section>
+                <img src="gfx/DopplerPanels.svg" />
+            </section>
+            <section>
+                <img src="gfx/3LevelDoppler.svg" />
+            </section>
+        </section>
+        <section> <!-- Polarization -->
+            <section>
+                <img width="100%" src="gfx/THzRotation.svg" />
+            </section>
+            <section>
+                <img width="100%" src="gfx/THzBothRotation.svg" />
+            </section>
+            <section>
+                <img src="gfx/ExpandingTransitionDiagram.svg" />
+            </section>
+            <section>
+                <img src="gfx/VisualOmegaMulti.svg" />
+            </section>
+            <section>
+                <img src="gfx/VisualGammaMulti.svg" />
+            </section>
+        </section>
+        
+        <section> <!-- Transit, Gaussian -->
+            <section>
+                <p>Rydberg states have long lifetimes</p>
+                <img width="60%" src="gfx/VisualGammaMulti.svg" />
+            </section>
+            <section data-auto-animate>
+                <p>Dominant Rydberg loss process is transit</p>
+                <img src="gfx/TransitProcess.svg" />
+            </section>
+            <section data-auto-animate>
+                <p>Transit can be modelled by decay to Dummy state</p>
+                <div class="box">
+                    <img class="item" width="40%" src="gfx/TransitProcess.svg" />
+                    <img class="item" src="gfx/DummyTransition.svg" />
+                </div>
+            </section>
+            <section data-auto-animate>
+                <p>Unfortunately, our beams are too focused to assume the transit rate gives the broadening</p>
+                <div class="box">
+                    <img class="item" width="40%" src="gfx/TransitProcess.svg" />
+                    <img class="item" style="margin-left:5%" src="gfx/TransitTime.svg" />
+                </div>
+            </section>
+            <section>
+                <img src="gfx/AlexFigures.svg" />
+            </section>
+            <!-- <section>
+              Gaussian beam has slightly different broadening
+            </section> -->
+        </section>
+        
+        <section> <!-- Concluding remarks -->
+            <section>
+                <p><img src="gfx/VisualHamiltonian.svg" /><img src="gfx/VisualDecayOp.svg" /></p>
+                <img width="50%" src="gfx/VisualDM.svg" />
+            </section>
+            <section>
+                <p>Measurements with real atoms can be complicated</p>
+                <img src="gfx/TransitProcess.svg" />
+                <img src="gfx/ExpandingTransitionDiagram.svg" />
+            </section>
+            <section>
+                <img src="gfx/FinalSlide.svg" />
+            </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/math/math.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+          controls: false,
+          progress: true,
+          width: 800,
+          height: 500,
+          // Factor of the display size that should remain empty around
+          // the content
+          margin: 0.04,
+          navigationMode: 'linear',
+          transition: 'fade',
+          // Learn about plugins: https://revealjs.com/plugins/
+          plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+      });
+      
+      /*
+      function videoClick(event){
+         event.target.paused ? event.target.play() : event.target.pause();
+      }
+      
+      videos = document.querySelectorAll('video')
+      videos.forEach((vid) => {
+        vid.onclick = videoClick;
+      })
+      */
+      
+      /*
+      window.addEventListener("mousedown", handleClick, false);
+      window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+
+      function handleClick(e) {
+        if (!Reveal.isOverview()){
+          e.preventDefault();
+          if(e.button === 0) Reveal.next(); 
+          if(e.button === 2) Reveal.prev();
+        }
+      }*/
+    </script>
+  </body>
+</html>
